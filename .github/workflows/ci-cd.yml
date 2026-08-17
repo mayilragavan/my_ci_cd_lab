@@ -42,11 +42,9 @@ jobs:
           git clone https://github.com/mayilragavan/grade-api-gitops.git gitops
           cd gitops
           
-          if [[ "$OSTYPE" == "darwin"* ]]; then
-            sed -i '' "s|image: ghcr.io/${{ github.repository }}:.*|image: ghcr.io/${{ github.repository }}:${{ github.sha }}|g" deployment.yaml
-          else
+         
             sed -i "s|image: ghcr.io/${{ github.repository }}:.*|image: ghcr.io/${{ github.repository }}:${{ github.sha }}|g" deployment.yaml
-          fi
+
           
           # Commit changes
           git config --global user.name "GitHub Actions"
